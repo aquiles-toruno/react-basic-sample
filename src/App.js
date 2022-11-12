@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import MyButton from "./components/MyButton";
+import MyLabel from "./components/MyLabel";
 
 function App() {
+  const [counter, setCounter] = useState(0);
+  const sum = (event) => {
+    setCounter(counter + 1);
+  }
+  const reset = (event) => {
+    setCounter(0);
+  }
+
+  let message = `The value of counter is: ${counter}`
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <MyButton onClick={sum} title="Add 1" />
+      <MyButton onClick={reset} title="Reset" />
+      <MyLabel text={message} />
+    </>
+  )
 }
 
 export default App;
